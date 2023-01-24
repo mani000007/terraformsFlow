@@ -29,3 +29,15 @@ jobs:
       run: terraform plan
     - name: building terraform
       run: terraform apply -auto-approve
+    - name: Build Docker image
+      run: |
+        docker build -t my-image:latest .
+      
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+      
+    - name: Push image to Docker Hub
+      run: |
+        docker tag my-image:latest "${{ secrets.DOCKER_HUB_USERNAME }}/my-image:latest"
+        docker push "${{ secrets.DOCKER_HUB_USERNAME }}/my-image:latest"
+
