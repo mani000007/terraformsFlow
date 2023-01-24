@@ -6,8 +6,8 @@ provider "aws"{
 resource "aws_instance" "server" {
   ami           = "ami-00874d747dde814fa"
   instance_type = "t2.micro"
-  subnet_id="subnet-001c0a640b665b349"
-  security_groups=["sg-0bb446d22d2863447"]
+  subnet_id="subnet-084e48ad954a86134"
+  security_groups=["sg-0a9b97852f6d8f294"]
   
 
 
