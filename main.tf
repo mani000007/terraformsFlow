@@ -3,7 +3,7 @@ provider "aws"{
 
 }
 
-resource "aws_instance" "terraform" {
+resource "aws_instance" "server" {
   ami           = "ami-00874d747dde814fa"
   instance_type = "t2.micro"
   subnet_id="subnet-001c0a640b665b349"
