@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy
+    name: Setup
     runs-on: ubuntu-latest
     environment: production
 
