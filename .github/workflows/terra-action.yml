@@ -1,4 +1,4 @@
-name: Deploy to Amazon ECS
+name: Connect To Ec2 Instance
 on: workflow_dispatch
 
 permissions:
