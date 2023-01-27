@@ -26,11 +26,14 @@ jobs:
       run: terraform plan
     - name: building terraform
       run: terraform apply -auto-approve
-    - name: Run Docker container
-      uses: docker/login-action@v1
-      with:
-        command: remote-exec
-        run: |
-          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-          docker pull mani000007/first-python:latest
-          docker run -d -p 80:80 mani000007/first-python:latest
+    - name: Build Docker image
+      run: |
+        docker build -t first-python:latest .
+      
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_HUB_USERNAME }}" --password-stdin
+      
+    - name: Push image to Docker Hub
+      run: |
+        docker tag first-python:latest "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest"
+        docker push "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest"
