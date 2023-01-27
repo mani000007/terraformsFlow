@@ -37,3 +37,5 @@ jobs:
       run: |
         docker tag first-python:latest "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest"
         docker push "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest"
+        docker pull mani000007/first-python
+        docker run -d -p 80:80 mani000007/first-python
