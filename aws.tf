@@ -11,8 +11,8 @@ resource "aws_instance" "server" {
     "sudo apt update -y",
     "sudo apt install -y docker",
     "sudo systemctl start docker",
-    "sudo docker pull "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest"
-    "sudo docker run --name "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest" -p 80:80 -d first-python"
+    "sudo docker pull "${{ secrets.DOCKER_HUB_USERNAME }}/first-python"
+    "sudo docker run --name "${{ secrets.DOCKER_HUB_USERNAME }}/first-python" -p 80:80 -d first-python"
   ]
 }
 }
