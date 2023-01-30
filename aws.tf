@@ -15,6 +15,6 @@ resource "aws_instance" "server" {
   ]
   tags = {
     Name = "terraform"
-  }
-    
+  }    
+}
 }
