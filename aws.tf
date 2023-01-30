@@ -8,13 +8,11 @@ resource "aws_instance" "server" {
   security_groups= ["sg-05b3f1a6fd83be07c"]
   provisioner "remote-exec" {
   inline = [
-    "sudo yum update -y",
-    "sudo yum install -y docker",
+    "sudo apt update -y",
+    "sudo apt install -y docker",
     "sudo systemctl start docker",
-    "sudo docker run --name my-nginx -p 80:80 -d nginx"
+    "sudo docker pull "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest"
+    "sudo docker run --name "${{ secrets.DOCKER_HUB_USERNAME }}/first-python:latest" -p 80:80 -d first-python"
   ]
-  tags = {
-    Name = "terraform"
-  }    
 }
 }
